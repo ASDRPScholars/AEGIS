@@ -4,8 +4,8 @@ This repository contains numerical solvers for the 1D Euler equations of gas dyn
 
 ## Files Overview
 
-### `1dEulerTESTING.py`
-This script is designed to test and compare different numerical schemes against standard benchmark problems for the 1D Euler equations. 
+### `1D_Shock-Tube_Tests.py`
+This script is designed to test and compare different numerical schemes against standard benchmark problems for the 1D Euler equations. It primarily is used for testing schemes for shock capturing, but contains other problems as well.
 
 **Features:**
 - **Numerical Methods Included:**
