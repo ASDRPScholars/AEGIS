@@ -34,7 +34,7 @@ MIT URTC 2026: [will be added shortly as AEGIS.pdf]()
 
 ---
 
-## Files Overview
+## Solver Overview
 
 ### `1D_Shock-Tube_Tests.py`
 This script is designed to test and compare different numerical schemes against standard benchmark problems for the 1D Euler equations. It primarily is used for testing schemes for shock capturing, but contains other problems as well.
