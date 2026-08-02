@@ -31,6 +31,8 @@ Shown at timestep t=1.8.
 ## Paper
 MIT URTC 2026: [AEGIS.pdf]()
 
+---
+
 ## Files Overview
 
 ### `1D_Shock-Tube_Tests.py`
