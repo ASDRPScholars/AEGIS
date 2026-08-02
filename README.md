@@ -12,7 +12,9 @@
 ![aegis banner 2](https://github.com/user-attachments/assets/11f1e05a-c689-4c26-ae17-43c0339c68ad)
 
 ---
-**Built by the DeGrendele Simulation Lab**
+**Built by the DeGrendele Simulation Lab.**
+
+
 Aditya Kaul, Naga Chintalapati, Vunal Jinasundera, Arnav Krishnan, Advika Singh, Claire Wang, Jasmine Lindstrorm, Vipanchi Rawat
 
 ## Abstract
