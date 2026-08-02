@@ -25,6 +25,7 @@ Index Terms—computational fluid dynamics, high-order methods, finite-volume me
 
 ## Plots
 ![solution plot](_)
+
 Shown at timestep t=1.8.
 
 
