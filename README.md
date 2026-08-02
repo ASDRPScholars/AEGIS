@@ -15,9 +15,11 @@
 **Built by the DeGrendele Simulation Lab**
 Aditya Kaul, Naga Chintalapati, Vunal Jinasundera, Arnav Krishnan, Advika Singh, Claire Wang, Jasmine Lindstrorm, Vipanchi Rawat
 
+## Abstract
+Abstract—We present the Adaptive Edge-Guided Interface Scheme (AEGIS), a high-order shock-capturing scheme for the 1D Euler equations. AEGIS adaptively blends fifth-order and low-order numerical fluxes based on local flow smoothness. A modified Jameson–Schmidt–Turkel discontinuity sensor is used to combine pressure and density indicators to detect discontinuities, and a nonlinear mapping converts the resulting interface indicators into flux weights. Our scheme is evaluated on the Sod, Lax, and Shu–Osher shock-tube problems and a smooth
+Gaussian density-pulse advection problem. We compare the L1 and L2 errors of AEGIS to those of a first-order Lax–Friedrichs solver and a component-wise finite-difference implementation of the fifth-order Jiang–Shu weighted essentially non-oscillatory scheme (WENO5-JS) for the tested problems. Across the shock-tube problems, AEGIS was able to reduce density-profile L1 errors by 15.71–31.59% and L2 errors by 0.15–25.71% relative to WENO5-JS. For the smooth advection problem, AEGIS exhibited approximately fifth-order convergence. The results demonstrate the ability of AEGIS to effectively preserve high-order accuracy in smooth regions while increasing low-order flux dissipation in the presence of discontinuities.
 
-## Summary
-This repository contains numerical solvers for the 1D Euler equations of gas dynamics. It implements multiple numerical methods and includes scripts for both standard benchmark testing (shock tube problems) and formal convergence studies.
+Index Terms—computational fluid dynamics, high-order methods, finite-volume methods, shock capturing, 1D Euler equations.
 
 ## Files Overview
 
