@@ -23,6 +23,14 @@ Gaussian density-pulse advection problem. We compare the L1 and L2 errors of AEG
 
 Index Terms—computational fluid dynamics, high-order methods, finite-volume methods, shock capturing, 1D Euler equations.
 
+## Plots
+![solution plot](_)
+Shown at timestep t=1.8.
+
+
+## Paper
+MIT URTC 2026: [AEGIS.pdf]()
+
 ## Files Overview
 
 ### `1D_Shock-Tube_Tests.py`
@@ -68,3 +76,6 @@ python 1dEulerCONVERGENCE.py
 ```
 
 Outputs will automatically be generated and stored in a local `results_lf/` directory created at runtime.
+
+---
+![cse](https://github.com/user-attachments/assets/d91a05a4-8a67-4879-8e39-fde85355afc9#gh-dark-mode-only)
