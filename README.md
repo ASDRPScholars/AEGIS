@@ -1,4 +1,7 @@
-![aegis logo](<img width="6000" height="1060" src="https://github.com/user-attachments/assets/d2ddba91-d0ba-4a3d-9b25-5823d2166de5" />)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d2ddba91-d0ba-4a3d-9b25-5823d2166de5" width="300" alt="aegis logo">
+</p>
+
 
 
 ---
