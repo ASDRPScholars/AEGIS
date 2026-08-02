@@ -5,7 +5,7 @@
   <i align="center">An Adaptive Edge-Guided Blended-Flux Scheme for the 1D Euler Equations.</i>
 </p>
 
-![aegis banner 2](https://github.com/user-attachments/assets/3830634e-8890-4e53-a2d7-55098efa84fa)
+![aegis banner 2](https://github.com/user-attachments/assets/11f1e05a-c689-4c26-ae17-43c0339c68ad)
 
 ---
 **Built by the DeGrendele Simulation Lab**
