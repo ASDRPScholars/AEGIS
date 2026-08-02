@@ -1,4 +1,5 @@
-![aegis logo](https://github.com/user-attachments/assets/72ae8cc6-a51a-44c3-8afa-9c06978b691e)
+![aegis logo](<img width="6000" height="1060" src="https://github.com/user-attachments/assets/d2ddba91-d0ba-4a3d-9b25-5823d2166de5" />)
+
 
 ---
 <p align="center">
