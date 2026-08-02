@@ -1,5 +1,18 @@
-# 1D Euler Equations Solver
+![aegis logo](https://github.com/user-attachments/assets/72ae8cc6-a51a-44c3-8afa-9c06978b691e)
 
+---
+<p align="center">
+  <i align="center">An Adaptive Edge-Guided Blended-Flux Scheme for the 1D Euler Equations.</i>
+</p>
+
+![aegis banner 2](https://github.com/user-attachments/assets/3830634e-8890-4e53-a2d7-55098efa84fa)
+
+---
+**Built by the DeGrendele Simulation Lab**
+Aditya Kaul, Naga Chintalapati, Vunal Jinasundera, Arnav Krishnan, Advika Singh, Claire Wang, Jasmine Lindstrorm, Vipanchi Rawat
+
+
+## Summary
 This repository contains numerical solvers for the 1D Euler equations of gas dynamics. It implements multiple numerical methods and includes scripts for both standard benchmark testing (shock tube problems) and formal convergence studies.
 
 ## Files Overview
