@@ -5,7 +5,16 @@ Finished shock-problem code!
 import numpy as np
 import matplotlib.pyplot as plt
 import os
-from numba import njit # Trying to speed it up Ig
+from numba import njit
+import matplotlib as mpl
+
+# Set stuff at the top for font
+mpl.rcParams.update({
+    "font.family": "serif",
+    "mathtext.fontset": "stix",
+    "pdf.fonttype": 42,
+    "ps.fonttype": 42,
+})
 
 @njit
 def first_order_solution(rho, mom, E, dt, dx):
