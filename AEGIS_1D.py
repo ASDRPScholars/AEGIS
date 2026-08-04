@@ -2,14 +2,23 @@
 This file is only the AEGIS solver, with no method benchmarking
 '''
 
-# Initializing all the functions here to simplify the layout
-
 import numpy as np
 import matplotlib.pyplot as plt
 import os
 from numba import njit
+import matplotlib as mpl
 
-# I'm just gonna take the old code and paste it to here
+# Formatting stuff for outputs
+mpl.rcParams.update({
+    "font.family": "serif",
+    "mathtext.fontset": "stix",
+    "pdf.fonttype": 42,
+    "ps.fonttype": 42,
+})
+
+# All functions are defined first and then the actual simulation is run after
+# The code is formatted differently than the benchmark scripts
+# But the actual AEGIS code is the same
 
 @njit
 def first_order_solution(rho, mom, E, dt, dx):
