@@ -6,6 +6,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 from numba import njit
+import matplotlib as mpl
+
+# Set stuff at the top for font
+mpl.rcParams.update({
+    "font.family": "serif",
+    "mathtext.fontset": "stix",
+    "pdf.fonttype": 42,
+    "ps.fonttype": 42,
+})
 
 # Just to get it across everything
 gamma = 1.4  # Ratio of specific heats
@@ -857,19 +866,41 @@ for cells in numCells:
     errorL2_WENO[numCells.index(cells)] = np.sqrt(np.mean((rho_WENO[physical] - rho_ref)**2))
     errorL2_first[numCells.index(cells)] = np.sqrt(np.mean((rho_first[physical] - rho_ref)**2))
 
+# Setting up the reference lines
+numCells_arr = np.asarray(numCells, dtype=float)
+
+anchor_error_L1 = errorL1_blend[0]
+anchor_error_L2 = errorL2_blend[0]
+anchor_resolution = numCells[0]
+
+def reference_line(anchor_error, order):
+    return anchor_error * (numCells_arr / anchor_resolution)**(-order)
+
+fifth_order_L1  = reference_line(anchor_error_L1, 5)
+fourth_order_L1 = reference_line(anchor_error_L1, 4)
+first_order_L1  = reference_line(anchor_error_L1, 1)
+
+fifth_order_L2  = reference_line(anchor_error_L2, 5)
+fourth_order_L2 = reference_line(anchor_error_L2, 4)
+first_order_L2  = reference_line(anchor_error_L2, 1)
+
 # Plotting the error vs. number of cells
 
 plt.figure(figsize=(10, 5))
 plt.plot(numCells, errorL1_blend, label='Blended', color='r')
 plt.plot(numCells, errorL1_WENO, label='WENO5', color='b')
 plt.plot(numCells, errorL1_first, label='First Order', color='y')
+plt.plot(numCells, fifth_order_L1, label=r'Reference $\mathcal{O}(N^{-5})$', color='0.6')
+plt.plot(numCells, fourth_order_L1, label=r'Reference $\mathcal{O}(N^{-4})$', color='0.6', linestyle='--')
+plt.plot(numCells, first_order_L1, label=r'Reference $\mathcal{O}(N^{-1})$', color='0.6', linestyle=':')
 plt.xscale('log')
 plt.yscale('log')
-plt.xlabel('Total Grid Points, N')
+plt.xlabel('Total Cells, N')
 plt.ylabel('L1 Error')
-plt.title('L1 Error vs. Total Grid Points')
+plt.title('L1 Error vs. Total Cells')
 plt.legend()
 plt.grid()
+plt.tight_layout()
 plt.savefig(os.path.join(output_dir, 'L1error_plot.pdf'))
 plt.show()
 
@@ -877,13 +908,17 @@ plt.figure(figsize=(10, 5))
 plt.plot(numCells, errorL2_blend, label='AEGIS', color='r')
 plt.plot(numCells, errorL2_WENO, label='WENO5-JS', color='b')
 plt.plot(numCells, errorL2_first, label='FO-LF', color='y')
+plt.plot(numCells, fifth_order_L2, label=r'Reference $\mathcal{O}(N^{-5})$', color='0.6')
+plt.plot(numCells, fourth_order_L2, label=r'Reference $\mathcal{O}(N^{-4})$', color='0.6', linestyle='--')
+plt.plot(numCells, first_order_L2, label=r'Reference $\mathcal{O}(N^{-1})$', color='0.6', linestyle=':')
 plt.xscale('log')
 plt.yscale('log')
-plt.xlabel('Total Grid Points, N')
+plt.xlabel('Total cells, N')
 plt.ylabel('L2 Error')
-plt.title('L2 Error vs. Total Grid Points')
+plt.title('L2 Error vs. Total Cells')
 plt.legend()
 plt.grid()
+plt.tight_layout()
 plt.savefig(os.path.join(output_dir, 'L2error_plot.pdf'))
 plt.show()
 plt.close()
