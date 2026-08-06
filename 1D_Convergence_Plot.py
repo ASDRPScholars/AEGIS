@@ -12,6 +12,14 @@ import matplotlib as mpl
 mpl.rcParams.update({
     "font.family": "serif",
     "mathtext.fontset": "stix",
+
+    "font.size": 14,
+    "axes.titlesize": 13,
+    "axes.labelsize": 13,
+    "xtick.labelsize": 13,
+    "ytick.labelsize": 13,
+    "legend.fontsize": 13,
+
     "pdf.fonttype": 42,
     "ps.fonttype": 42,
 })
@@ -895,9 +903,9 @@ plt.plot(numCells, fourth_order_L1, label=r'Reference $\mathcal{O}(N^{-4})$', co
 plt.plot(numCells, first_order_L1, label=r'Reference $\mathcal{O}(N^{-1})$', color='0.6', linestyle=':')
 plt.xscale('log')
 plt.yscale('log')
-plt.xlabel('Total Cells, N')
-plt.ylabel('L1 Error')
-plt.title('L1 Error vs. Total Cells')
+plt.title(r"$L_1$ Error vs. Total Cells")
+plt.xlabel(r"Total Cells, $N$")
+plt.ylabel(r"$L_1$ Error")
 plt.legend()
 plt.grid()
 plt.tight_layout()
@@ -913,9 +921,9 @@ plt.plot(numCells, fourth_order_L2, label=r'Reference $\mathcal{O}(N^{-4})$', co
 plt.plot(numCells, first_order_L2, label=r'Reference $\mathcal{O}(N^{-1})$', color='0.6', linestyle=':')
 plt.xscale('log')
 plt.yscale('log')
-plt.xlabel('Total cells, N')
-plt.ylabel('L2 Error')
-plt.title('L2 Error vs. Total Cells')
+plt.title(r"$L_2$ Error vs. Total Cells")
+plt.xlabel(r"Total Cells, $N$")
+plt.ylabel(r"$L_2$ Error")
 plt.legend()
 plt.grid()
 plt.tight_layout()
