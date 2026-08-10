@@ -668,7 +668,7 @@ def rhs(rho, mom, E, dt, blend):
     # Fifth order in smooth regions
     F_half_hi = F_half5
 
-    # Original fourth/first-order blend beside shocks
+    # Second/first-order flux blend
     F_half_lo = 0.75 * F_half_MC + 0.25 * F_half1
 
     # Convert the cell-centered sensor to one shared value at each face
@@ -677,13 +677,14 @@ def rhs(rho, mom, E, dt, blend):
         shockArray[1:]
     )
 
-    # Gaussian curve for the sensor scale
+    # Weibull cdf mapping for the weighting
     # Tuned values; these do not change between problems
 
-    sensor_scale = 0.02
+    shape_parameter = 2
+    scale_parameter = 0.02
 
     shockWeight = 1.0 - np.exp(
-        -(edge_sensor / sensor_scale)**2
+        -(edge_sensor / scale_parameter)**shape_parameter
     )
 
     # Blend fluxes before taking their divergence
@@ -796,6 +797,7 @@ while t < t_final:
 
     rho_WENO, u_WENO, p_WENO = cons_to_prim(rho_WENO, mom_WENO, E_WENO)
 
+    # Any mentions to "exact" solution just mean the extremely fine reference solution
     rho_exact, u_exact, p_exact = cons_to_prim(rho_exact, mom_exact, E_exact)
 
     rho_first, u_first, p_first = cons_to_prim(rho_first, mom_first, E_first)
@@ -807,10 +809,13 @@ while t < t_final:
     c_first = np.sqrt(gamma * p_first / rho_first)
 
     # Compute time step based on CFL condition (for each method)
-    dt_blend = CFL * dx / np.max(np.abs(u_blend) + c_blend)
-    dt_WENO = CFL * dx / np.max(np.abs(u_WENO) + c_WENO)
-    dt_exact = CFL * dx_exact / np.max(np.abs(u_exact) + c_exact + 1e-12)
-    dt_first = CFL * dx / np.max(np.abs(u_first) + c_first)
+    # Non-zero denominator enforcement
+    epsilon = 10**(-12)
+    
+    dt_blend = CFL * dx / (np.max(np.abs(u_blend) + c_blend) + epsilon)
+    dt_WENO = CFL * dx / (np.max(np.abs(u_WENO) + c_WENO) + epsilon)
+    dt_exact = CFL * dx_exact / (np.max(np.abs(u_exact) + c_exact) + epsilon)
+    dt_first = CFL * dx / (np.max(np.abs(u_first) + c_first) + epsilon)
 
     #print(f"dt_blend: {dt_blend}, dt_WENO: {dt_WENO}, dt_exact: {dt_exact}, dt_first: {dt_first}")
 
