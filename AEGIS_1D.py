@@ -299,7 +299,7 @@ def rhs(rho, mom, E, dt, blend):
     # Fifth order in smooth regions
     F_half_hi = F_half5
 
-    # Original fourth/first-order blend beside shocks
+    # Second/first-order flux blending
     F_half_lo = 0.75 * F_half_MC + 0.25 * F_half1
 
     # Convert the cell-centered sensor to one shared value at each face
@@ -308,12 +308,12 @@ def rhs(rho, mom, E, dt, blend):
         shockArray[1:]
     )
 
-    # Gaussian curve for the sensor scale
-
-    sensor_scale = 0.02
+    # Weibull cdf mapping for the sensor scale
+    shape_parameter = 2
+    scale_parameter = 0.02
 
     shockWeight = 1.0 - np.exp(
-        -(edge_sensor / sensor_scale)**2
+        -(edge_sensor / scale_parameter)**shape_parameter
     )
 
     # Blend fluxes before taking their divergence
@@ -341,7 +341,7 @@ def apply_bcs(rho, mom, E):
     E[-3:] = E[-4]
 
     if bc == "normal":
-        # Just going with simple 0 gradient in/outflows
+        # Just going with simple 0 gradient outflows
 
         mom[:3] = mom[3]
         mom[-3:] = mom[-4]
@@ -569,8 +569,10 @@ while t < t_final:
     # Compute speed of sound (for each method)
     c_blend = np.sqrt(gamma * p_blend / rho_blend)
 
-    # Compute time step based on CFL condition (for each method)
-    dt_blend = CFL * dx / np.max(np.abs(u_blend) + c_blend)
+    # Compute time step based on CFL condition
+    # Non-zero denominator enforcement
+    epsilon = 10**(-12)
+    dt_blend = CFL * dx / (np.max(np.abs(u_blend) + c_blend) + epsilon)
 
     # Choose the time-step which gets us exactly to t_final
 
