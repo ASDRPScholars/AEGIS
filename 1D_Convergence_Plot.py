@@ -590,7 +590,7 @@ def rhs(rho, mom, E, dt, blend):
     # Fifth order in smooth regions
     F_half_hi = F_half5
 
-    # Original fourth/first-order blend beside shocks
+    # Original second/first-order blend beside shocks
     F_half_lo = 0.75 * F_half_MC + 0.25 * F_half1
 
     # Convert the cell-centered sensor to one shared value at each face
