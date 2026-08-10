@@ -626,7 +626,7 @@ def rhs(rho, mom, E, dt, blend):
 def apply_bcs(rho, mom, E):
     # Applying BCs
 
-    # Just going with simple 0 gradient in/outflows
+    # Just going with simple 0 gradient outflows
 
     rho[:3] = rho[3]
     rho[-3:] = rho[-4]
