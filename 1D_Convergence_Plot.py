@@ -51,8 +51,10 @@ def exact_solution(Nx_exact):
         # Compute speed of sound
         c = np.sqrt(gamma * p / rho)
 
+        epsilon = 10**(-12)
+
         # Compute time step based on CFL condition
-        dt = min(CFL * dx / np.max(np.abs(u) + c), t_final - t)
+        dt = min(CFL * dx / (np.max(np.abs(u) + c) + epsilon), t_final - t)
 
         # Calculate all time steps
         rho, mom, E = WENO_solution(rho, mom, E, dt, dx)
@@ -599,12 +601,13 @@ def rhs(rho, mom, E, dt, blend):
         shockArray[1:]
     )
 
-    # Gaussian curve for the sensor scale
+    # Weibull cdf mapping for the sensor scale
 
-    sensor_scale = 0.02
+    shape_parameter = 2
+    scale_parameter = 0.02
 
     shockWeight = 1.0 - np.exp(
-        -(edge_sensor / sensor_scale)**2
+        -(edge_sensor / scale_parameter)**shape_parameter
     )
 
     # Blend fluxes before taking their divergence
@@ -732,10 +735,13 @@ def solution(rho, mom, E, t_final, dx, x):
         c_first = np.sqrt(gamma * p_first / rho_first)
         c_WENO = np.sqrt(gamma * p_WENO / rho_WENO)
 
+        # Non-zero denominator enforcement
+        epsilon = 10**(-12)
+
         # Compute time step based on CFL condition (for each method)
-        dt_blend = CFL * dx / np.max(np.abs(u_blend) + c_blend)
-        dt_first = CFL * dx / np.max(np.abs(u_first) + c_first)
-        dt_WENO = CFL * dx / np.max(np.abs(u_WENO) + c_WENO)
+        dt_blend = CFL * dx / (np.max(np.abs(u_blend) + c_blend) + epsilon)
+        dt_first = CFL * dx / (np.max(np.abs(u_first) + c_first) + epsilon)
+        dt_WENO = CFL * dx / (np.max(np.abs(u_WENO) + c_WENO) + epsilon)
 
         # Choose the smallest time step
 
@@ -835,6 +841,7 @@ def solution(rho, mom, E, t_final, dx, x):
 numCells = [32, 64, 128, 256, 512, 1024]
 
 # Exact solution to compare against
+# Any mentions to "exact" solution just mean the extremely fine reference solution
 rho_exact, mom_exact, E_exact, x_exact = exact_solution(10240)
 
 errorL1_blend = np.zeros(len(numCells))
@@ -930,3 +937,10 @@ plt.tight_layout()
 plt.savefig(os.path.join(output_dir, 'L2error_plot.pdf'))
 plt.show()
 plt.close()
+
+# Getting convergence order for L1 and L2 error.
+error_Order_L1 = (np.log(errorL1_blend[2]) - np.log(errorL1_blend[0]))/(np.log(numCells[2]) - np.log(numCells[0]))
+error_Order_L2 = (np.log(errorL2_blend[2]) - np.log(errorL2_blend[0]))/(np.log(numCells[2]) - np.log(numCells[0]))
+
+print(f"L1 Error Order: {-error_Order_L1}")
+print(f"L2 Error Order: {-error_Order_L2}")
