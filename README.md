@@ -46,9 +46,9 @@ This script is designed to test and compare different numerical schemes against 
   - **Blended Scheme:** A hybrid method that utilizes an extended JST edge sensor as a shock detector to dynamically switch/blend between high-order polynomial reconstructions (e.g., MUSCL-MC, 4th-order, and 5th-order) in smooth regions and dissipative methods near shocks.
 - **Initial Conditions (Benchmarks):**
   Configurable via the `IC_type` variable, allowing simulation of:
-  - `sod`: Sod Shock Tube
-  - `shu-osher`: Shu-Osher Problem (shock interacting with density perturbations)
-  - `lax_tube`: Lax Shock Tube
+  - `sod`: Sod Shock-Tube
+  - `shu-osher`: Shu-Osher Shock-Tube
+  - `lax_tube`: Lax Shock-Tube
   - `woodward`: Woodward-Colella blast wave (Work In Progress)
   - `Einfeldt`: Strong expansion/rarefaction test
   - `Gauss`: Smooth Gaussian density pulse
@@ -74,8 +74,8 @@ To run these scripts, you will need the following Python packages:
 Simply execute either Python script directly:
 
 ```bash
-python 1dEulerTESTING.py
-python 1dEulerCONVERGENCE.py
+python 1D_Shock-Tube_Tests.py
+python 1D_Convergence_Plot.py
 ```
 
 Outputs will automatically be generated and stored in a local `results_lf/` directory created at runtime.
