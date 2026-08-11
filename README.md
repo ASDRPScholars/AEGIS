@@ -55,7 +55,7 @@ This script is designed to test and compare different numerical schemes against 
 - **Output:** 
   Generates and saves profiles of Density, Velocity, and Pressure comparing the different methods against a high-resolution "exact" reference solution. Plots are saved to the `results_lf/` directory.
 
-### `1dEulerCONVERGENCE.py`
+### `1D_Convergence_Plot.py`
 This script focuses on performing a formal grid convergence study to determine the actual numerical order of accuracy of the implemented schemes.
 
 **Features:**
