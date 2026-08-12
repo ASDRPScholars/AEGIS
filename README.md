@@ -29,7 +29,7 @@ Shown at timestep t=1.8.
 
 
 ## Paper
-MIT URTC 2026: [will be added shortly as AEGIS.pdf]()
+MIT URTC 2026 Submission: [AEGIS_Conservation_Laws.pdf](https://github.com/user-attachments/files/30963491/AEGIS_Conservation_Laws.pdf)
 
 ---
 
