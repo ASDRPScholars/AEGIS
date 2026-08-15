@@ -22,15 +22,17 @@ This work presents the Adaptive Edge-Guided Interface Scheme (**AEGIS**), a high
 
 Key content: computational fluid dynamics, high-order methods, finite-volume methods, shock capturing, 1D Euler equations.
 
-## Plots
+## Plots 
+Shu-Osher Solution Plot Shown at Timestep t=1.8
 ![shu plot](https://github.com/user-attachments/assets/7abb89da-ba07-44fd-990b-e79bd415a40f)
+Sod Shock Tube Solution Plot Shown at Timestep t=0.2
 ![sod plot](https://github.com/user-attachments/assets/44408ed4-4720-451a-84e0-ace8ce2fea70)
+Einfeldt Solution Plot Shown at Timestep t=0.15
 ![einfeldt plot](https://github.com/user-attachments/assets/6c3e3a43-4f64-40cb-8782-7f97238b8fc5)
+Lax Solution Plot Shown at Timestep t=0.14
 ![lax plot](https://github.com/user-attachments/assets/0cce8697-b233-4837-9f3f-b5056181004a)
+L2 Error Solution Plot
 ![l2_eror](https://github.com/user-attachments/files/31105335/L2error_plot.5.pdf)
-
-Shown at timestep t=1.8.
-
 
 ## Paper
 MIT URTC 2026 Submission: [AEGIS_Conservation_Laws.pdf](https://github.com/user-attachments/files/30963491/AEGIS_Conservation_Laws.pdf)
