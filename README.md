@@ -32,6 +32,7 @@ Einfeldt Solution Plot Shown at Timestep t=0.15
 Lax Solution Plot Shown at Timestep t=0.14
 ![lax plot](https://github.com/user-attachments/assets/0cce8697-b233-4837-9f3f-b5056181004a)
 L2 Error Solution Plot
+
 ![l2_eror](https://github.com/user-attachments/files/31105335/L2error_plot.5.pdf)
 
 ## Paper
