@@ -29,8 +29,7 @@ Einfeldt Solution Plot Shown at Timestep t=0.15
 ![einfeldt plot](https://github.com/user-attachments/assets/6c3e3a43-4f64-40cb-8782-7f97238b8fc5)
 Lax Solution Plot Shown at Timestep t=0.14
 ![lax plot](https://github.com/user-attachments/assets/0cce8697-b233-4837-9f3f-b5056181004a)
-L2 Error Solution Plot
-
+L2 Error Solution Plot (Run over the 1D Smooth Advection Problem)
 ![l2_error](https://github.com/user-attachments/assets/a40653f6-c5b8-4077-bfe2-93e3c334959c)
 
 ## Paper
