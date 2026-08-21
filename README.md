@@ -56,7 +56,7 @@ This script is designed to test and compare different numerical schemes against 
   - `Einfeldt`: Strong expansion/rarefaction test
   - `Gauss`: Smooth Gaussian density pulse
 - **Output:** 
-  Generates and saves profiles of Density, Velocity, and Pressure comparing the different methods against a high-resolution "exact" reference solution. Plots are saved to the `results_lf/` directory.
+  Generates and saves profiles of Density, Velocity, and Pressure comparing the different methods against a high-resolution reference solution. Plots are saved to the `results_lf/` directory.
 
 ### `1D_Convergence_Plot.py`
 This script focuses on performing a formal grid convergence study to determine the actual numerical order of accuracy of the implemented schemes.
@@ -64,7 +64,7 @@ This script focuses on performing a formal grid convergence study to determine t
 **Features:**
 - **Smooth Problem Testing:** Typically utilizes the `Gauss` smooth initial condition, as convergence rates for high-order schemes must be measured on continuous solutions without shocks.
 - **Grid Refinement:** Iterates the solution over a series of progressively finer grids (e.g., `N = 32, 64, 128, 256, 512, 1024`).
-- **Error Calculation:** Computes a highly resolved reference solution (e.g., `N = 10240`) to act as the "exact" solution. Interpolates the lower-resolution results onto the exact grid and calculates $L_1$ and $L_2$ norms of the error.
+- **Error Calculation:** Computes a highly resolved reference solution (e.g., `N = 10240`) to act as the reference solution. Interpolates the lower-resolution results onto the reference grid and calculates $L_1$ and $L_2$ norms of the error.
 - **Convergence Plots:** Produces log-log plots of $L_1$ and $L_2$ error versus the number of grid points. These plots visually demonstrate the convergence rates (slopes) of the First-Order, WENO5, and Blended methods, allowing validation of their theoretical order of accuracy. Output plots are saved to `results_lf/`.
 
 ## Dependencies
