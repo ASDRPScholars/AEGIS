@@ -1,0 +1,7 @@
+# Python bytecode caches
+__pycache__/
+*.py[cod]
+
+# Generated simulation output
+output/
+results_lf/
