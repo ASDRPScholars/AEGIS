@@ -115,6 +115,23 @@ def initialize_problems(IC_type, x):
         t_final = 0.18
         bc = "normal"
 
+    elif IC_type == "sod":
+        # Classic Sod's shock tube
+        # Part of the standard, non-MHD suite of problems to test the code over standard CFD
+        
+        rho[:] = 1.0
+        rho[x >= 0.5] = 0.125  # Right side density
+    
+        p[:] = 1.0
+        p[x >= 0.5] = 0.1  # Right side pressure
+    
+        u[:] = 0.0  # Velocity (zero everywhere)
+
+        # No magnetic field or velocities in other directions, so initialized to 0 above
+    
+        t_final = 0.2  # Final time
+        bc = "normal"
+
     # Convert to conservative variables
     # Total pressure
     p_t = p + 0.5*(B_x**2 + B_y**2 + B_z**2)
