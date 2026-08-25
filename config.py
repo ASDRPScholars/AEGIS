@@ -21,6 +21,8 @@ if IC_type == "brio-wu":
     gamma = 2.0
 elif IC_type == "ryu-jones":
     gamma = 5.0/3.0
+elif IC_type == "Gauss":
+    L = 1.0
 
 # Spatial grid
 x = np.linspace(0, L, Nx)
