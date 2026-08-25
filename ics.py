@@ -132,6 +132,71 @@ def initialize_problems(IC_type, x):
         t_final = 0.2  # Final time
         bc = "normal"
 
+    elif IC_type == "lax_tube":
+        # The Lax Shock Tube problem
+        
+        # Left state
+        rho_l = 0.445
+        p_l = 3.528
+        u_l = 0.689
+    
+        # Right state
+        rho_r = 0.5
+        p_r = 0.571
+        u_r = 0.0
+    
+        # Combining left and right states
+        shock_pos = 0.5
+    
+        rho = np.where(x < shock_pos, rho_l, rho_r)
+        p = np.where(x < shock_pos, p_l, p_r)
+        u = np.where(x < shock_pos, u_l, u_r)
+    
+        t_final = 0.14
+        bc = "normal"
+
+    elif IC_type == "Einfeldt":
+
+        rho[:] = 1.0
+        p[:] = 0.4
+        u_l = -2.0
+        u_r = 2.0
+    
+        shock_pos = 0.5
+    
+        u = np.where(x < shock_pos, u_l, u_r)
+
+        t_final = 0.15
+        bc = "normal"
+
+    elif IC_type == "woodward":
+        # This is the Woodward-Colella test problem
+    
+        rho[:] = 1.0
+        u[:] = 0.0
+        p_l = 1000.0
+        p_mid = 0.01
+        p_r = 100.0
+    
+        shock_pos1 = 0.1
+        shock_pos2 = 0.9
+    
+        p = np.where(x > shock_pos1, p_mid, p_l)
+        p[x > shock_pos2] = p_r
+
+        t_final = 0.038
+        bc = "reflect"
+
+    elif IC_type == "Gauss":
+        # 1D Smooth Advection problem
+    
+        rho = 1.0 + 0.1*np.exp(-((x - 0.5)**2)/(2*0.1**2))
+        u = 1.0
+        p = 1.0
+    
+        t_final = 0.5
+        bc = "normal"
+
     # Convert to conservative variables
     # Total pressure
     p_t = p + 0.5*(B_x**2 + B_y**2 + B_z**2)
