@@ -5,27 +5,29 @@ import numpy as np
 from numba import njit
 
 # Select initial conditions
-IC_type = "shu-osher"  # Options: "brio-wu", "shu-osher", "ryu-jones"
+IC_type = "einfeldt"
+# Options: "brio-wu", "ryu-jones", "shu-osher", "sod", "lax_tube", "woodward", "einfeldt", "gauss"
+
 time_integral = "SSPRK4" # Options: "SSPRK4", "RK4"
 
 # Constants
 gamma = 1.4        # Ratio of specific heats; modified for certain problems
-Nx = 256           # Number of grid points
-L = 1.0            # Domain length
-dx = L / (Nx - 1)  # Spatial step
 CFL = 0.4          # Courant number
 mu_0 = 1.0         # Permeability of free space
+L = 1.0            # Domain length
 
 # Change gamma for the different problems
 if IC_type == "brio-wu":
     gamma = 2.0
 elif IC_type == "ryu-jones":
     gamma = 5.0/3.0
-elif IC_type == "Gauss":
+elif IC_type == "gauss":
     L = 2.0
 
 # Spatial grid
-x = np.linspace(0, L, Nx)
+Nx = 256                  # Number of grid points
+dx = L / (Nx - 1)         # Spatial step
+x = np.linspace(0, L, Nx) # Spatial grid
 
 # Very common functions
 @njit
