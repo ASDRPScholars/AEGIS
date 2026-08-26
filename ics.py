@@ -155,7 +155,7 @@ def initialize_problems(IC_type, x):
         t_final = 0.14
         bc = "normal"
 
-    elif IC_type == "Einfeldt":
+    elif IC_type == "einfeldt":
 
         rho[:] = 1.0
         p[:] = 0.4
@@ -187,7 +187,7 @@ def initialize_problems(IC_type, x):
         t_final = 0.038
         bc = "reflect"
 
-    elif IC_type == "Gauss":
+    elif IC_type == "gauss":
         # 1D Smooth Advection Problem
 
         rho = 1.0 + 0.1*np.exp(-((x - 1.0)**2)/(2*0.1**2))
