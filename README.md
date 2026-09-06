@@ -33,7 +33,7 @@ L2 Error Solution Plot (Run over the 1D Smooth Advection Problem)
 ![l2_error](https://github.com/user-attachments/assets/a40653f6-c5b8-4077-bfe2-93e3c334959c)
 
 ## Paper
-MIT URTC 2026 Submission: [AEGIS_Conservation_Laws.pdf](https://github.com/user-attachments/files/30963491/AEGIS_Conservation_Laws.pdf)
+ICRAMI 2026 Submission: [Sim_Group___ICRAMI_2026.pdf](https://github.com/user-attachments/files/31888764/Sim_Group___ICRAMI_2026.pdf)
 
 ---
 
